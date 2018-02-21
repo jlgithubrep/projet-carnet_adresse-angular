@@ -1,0 +1,21 @@
+<p>
+  listage works!
+</p>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let element of personnes">
+      Nom : {{element.nom}}<br>
+      Id : {{element.id}}<br>
+      Adresse : {{element.adresse.rue}}, {{element.adresse.ville}}, {{element.adresse.codePostal}}
+      <button (click)='suppr(element.id)'>Supprimer</button>
+      <button (click)='affich(element.id)'>Modification</button>
+      <div id ="{{element.id}}" *ngIf="!aff && idAff==element.id"> <!-- !aff dans le ngif pour cacher le div comme [hidden] -->
+          <form #myForm1="ngForm" (ngSubmit)='modifPerson(element.id, element.nom, element.adresse.rue, element.adresse.ville, element.adresse.codePostal)'>
+              <input type="text" [(ngModel)]="element.nom" name="nom" required />
+              <input type="text" [(ngModel)]="element.adresse.rue" name="rue" required />
+              <input type="text" [(ngModel)]="element.adresse.ville" name="ville" required />
+              <input type="text" [(ngModel)]="element.adresse.codePostal" name="codePostal" required />
+              <button type="submit" [disabled]=!myForm1.valid>Confirmer la modification</button>
+         </form>
+      </div>
+    </li>
+  </ul>

@@ -1,0 +1,34 @@
+{
+  "adresses": [
+    {
+      "rue": "rue1",
+      "ville": "ville1",
+      "codePostal": "11111",
+      "id": 1
+    },
+    {
+      "rue": "rue2",
+      "ville": "ville2",
+      "codePostal": "22222",
+      "id": 2
+    },
+    {
+      "rue": "rue4",
+      "ville": "ville4",
+      "codePostal": "44444",
+      "id": 3
+    },
+    {
+      "rue": "qsd",
+      "ville": "qsd",
+      "codePostal": "qsd",
+      "id": 4
+    },
+    {
+      "rue": "sdc",
+      "ville": "gdrgvs",
+      "codePostal": "qefsgvdx",
+      "id": 5
+    }
+  ]
+}

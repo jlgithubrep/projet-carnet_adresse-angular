@@ -1,0 +1,21 @@
+<p>
+  recherche works!
+</p>
+
+<form #myForm="ngForm" (ngSubmit)='search()'>
+
+  Votre recherche: <input type="text" required [(ngModel)]="recherche" name="recherche" required/>
+
+  <select required [(ngModel)]="idRech" name="rech">
+    <option value="0">Nom</option>
+    <option value="1">Rue</option>
+    <option value="2">Ville</option>
+    <option value="3">Code Postal</option>
+  </select>
+
+  <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary">Effectuez la Recherche</button>
+</form>
+
+<div>
+  {{resultatRecherche}}
+</div>

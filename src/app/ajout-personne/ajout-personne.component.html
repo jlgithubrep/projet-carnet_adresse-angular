@@ -1,0 +1,60 @@
+<p>
+  ajout-personne works!
+</p>
+<form #myForm="ngForm" (ngSubmit)='addPerson()'>
+
+  <!--
+  Nom : <input type="text" [(ngModel)]="nom" name="nom" required/><br>
+  -->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Nom :</span>
+    </div>
+    <input type="text" [(ngModel)]="nom" name="nom" required class="form-control" placeholder="Donnez un nom" aria-label="nom" aria-describedby="basic-addon1">
+  </div>
+
+
+  <input type="radio" name="radioAdresse" checked (click)="toggleAdr(0)"> nouvelle adresse<br>
+  <input type="radio" name="radioAdresse" (click)="toggleAdr(1)"> adresse existante<br>
+  
+  <div *ngIf="toggleAdrBoolean == true">Nouvelle Adresse<br>
+    Rue: <input type="text" required [(ngModel)]="rue" name="rue"/>
+    Ville: <input type="text" required [(ngModel)]="ville" name="ville"/>
+    Code Postal: <input type="text" required [(ngModel)]="codePostal" name="codePostal"/>
+  </div>
+
+
+  <div *ngIf="toggleAdrBoolean == false">Selectionnez une adresse existante<br>
+    <!--tester les input rue ville et codepostal pour pas les prendre en compte quand ils sont vide-->
+    <!--
+    <select id="adr" required [(ngModel)]="adresses" (ngModelChange)="test(adresses)" name="adr">
+      <option id="{{elt.id}}"  *ngFor="let elt of personnes" [value]="[elt.adresse.rue,elt.adresse.ville,elt.adresse.codePostal]">Adresse : {{elt.adresse.rue}}, {{elt.adresse.ville}}, {{elt.adresse.codePostal}}</option>
+    </select>
+  -->
+
+  <select required  [(ngModel)]="idAdr" name ="adr">
+      <option [value]="i" *ngFor="let elt of adresses ; let i = index" >Adresse : {{elt.rue}}, {{elt.ville}}, {{elt.codePostal}}</option>
+  </select>
+
+  </div>
+
+  
+  <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary">Ajoutez la Personne</button>
+</form>
+
+<!--
+<div *ngIf="affichageSuccesAjoutPersonne == true">
+  {{nom}} ajouté avec succès
+</div>
+-->
+{{nom}}
+
+<!--
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let element of personnes">
+    Nom : {{element.nom}}<br>
+    Id : {{element.id}}<br>
+    Adresse : {{element.adresse.rue}}, {{element.adresse.ville}}, {{element.adresse.codePostal}}
+  </li>
+</ul>
+-->
